@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import SearchUI from './search-ui';
+import SearchRecipe from './SearchRecipe';
+import Recipes from './Recipes';
 
 class Home extends Component {
   render() {
     return (
       <div>
-        <SearchUI></SearchUI>
+        <SearchRecipe />
+        <Recipes />
       </div>
     );
   }

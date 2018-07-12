@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class SearchUI extends Component{
+class SearchRecipe extends Component{
 
 	constructor(props) {
 	  super(props);
@@ -15,6 +15,12 @@ class SearchUI extends Component{
 		let query =  this.state.query + event.key;
 		this.setState({query: query});
 		console.log(this.state.query);
+		fetch('http://www.recipepuppy.com/api/?q=' + query, { mode: 'no-cors' })
+		.then(results => {
+			console.log(results);
+		}).then(data =>{
+			console.log(data);
+		})
 	}
 
 
@@ -28,4 +34,4 @@ class SearchUI extends Component{
 }
 
 
-export default SearchUI;
+export default SearchRecipe;
