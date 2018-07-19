@@ -1,0 +1,2 @@
+export const UPDATE_SEARCH_KEY = 'UPDATE_SEARCH_KEY';
+export const UPDATE_RECIPES = 'UPDATE_RECIPES';

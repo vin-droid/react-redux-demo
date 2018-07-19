@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {debounce}  from "../Utility";
 
 class SearchRecipe extends Component{
 
@@ -9,13 +10,17 @@ class SearchRecipe extends Component{
 	  	query: ''
 	  };
   	this.keyPressHandler = this.keyPressHandler.bind(this);
+		this.hitGitApi = debounce(this.hitApi.bind(this),600);
 	}
 
 	keyPressHandler(event){
-		let query =  this.state.query + event.key;
-		this.setState({query: query});
-		console.log(this.state.query);
-		fetch('http://localhost:4000/api/search-recipe/?q=' + query)
+		this.setState({query: event.target.value},() => {
+			this.hitGitApi();
+		});
+	}
+
+	hitApi() {
+		fetch('http://localhost:4000/api/search-github-users/?username=' + this.state.query)
 		.then(results => {
 			console.log(results);
 			return results.json();
@@ -28,7 +33,7 @@ class SearchRecipe extends Component{
 	render(){
 		return (
 	      <div>
-	        <input type='text' name='title'  defaultValue={this.state.query}  onKeyPress={this.keyPressHandler}/>
+	        <input type='text' name='title'  defaultValue={this.state.query}  onChange={this.keyPressHandler}/>
 	      </div>
 	    );
 	}
