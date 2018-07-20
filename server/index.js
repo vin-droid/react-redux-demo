@@ -13,6 +13,23 @@ var path = require('path');
 
 app.listen(port, () => console.log(`Listening on port ${port} ${path.join(__dirname, '../client/build')}`));
 
+app.get('/api/search-github-users', (req, res) => {
+	let url_parts = url.parse(req.url, true);
+	let searchKey = url_parts.query.username;
+	console.log(searchKey);
+    let URL = `https://api.github.com/search/users?q=${searchKey}`;
+    console.log(URL);
+	request.get({ url: URL, headers: {'User-Agent':'Chrome'}},(err,response,body)=>{
+        //console.log(body);
+		res.json({
+            result: JSON.parse(body)
+		});
+        console.log(response);
+	})
+});
+
+
+
 if (process.env.NODE_ENV === 'production') {
     // Serve any static files
     app.use(express.static(path.join(__dirname, '../client/build')));
@@ -38,19 +55,4 @@ app.use(function (req, res, next) {
 
     // Pass to next layer of middleware
     next();
-});
-
-app.get('/api/search-github-users', (req, res) => {
-	let url_parts = url.parse(req.url, true);
-	let searchKey = url_parts.query.username;
-	console.log(searchKey);
-    let URL = `https://api.github.com/search/users?q=${searchKey}`;
-    console.log(URL);
-	request.get({ url: URL, headers: {'User-Agent':'Chrome'}},(err,response,body)=>{
-        //console.log(body);
-		res.json({
-            result: JSON.parse(body)
-		});
-        console.log(response);
-	})
 });

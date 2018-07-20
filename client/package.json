@@ -2,7 +2,7 @@
   "name": "reciepe-finder",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://user-finder.herokuapp.com/",
+  "proxy": "http://localhost:4000",
   "dependencies": {
     "@material-ui/core": "^1.4.0",
     "@material-ui/icons": "^1.1.0",
