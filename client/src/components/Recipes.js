@@ -1,28 +1,37 @@
 import React, { Component } from 'react';
-import SearchRecipe from './SearchRecipe';
 import RecipeItem from './../presentational/RecipeItem';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 
 class Recipes extends Component {
 	constructor(props) {
 	  super(props);
 	
 	  this.state = {
-	  	items: props.items
+	  	items: this.props.items || []
 	  };
-	}
-  render() {
-    let recipeItems;
-    if(this.props.recipes){    
-      recipeItems = this.props.recipes.map(recipeItem => {
-        return(
-          <RecipeItem recipeItem={recipeItem} />
-        );
-      });
-    }
+  }
 
+  componentWillReceiveProps(props) {
+    this.setState( {
+      items: props.items
+    });
+  }
+  
+  render() {
+    const recipeItems = this.state.items.map(recipeItem => {
+      return(
+        <Grid item xs={6} sm={3} key= {recipeItem.id}>
+          <Paper><RecipeItem recipeItem={recipeItem} /></Paper>
+        </Grid>
+      );
+    });
+    
     return (
       <div>
+        <Grid container spacing={24}>
         {recipeItems}
+        </Grid>
       </div>
     );
   }

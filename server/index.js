@@ -11,6 +11,15 @@ var url = require('url');
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
+if (process.env.NODE_ENV === 'development') {
+    // Serve any static files
+    app.use(express.static(path.join(__dirname, '../client/build')));
+    // Handle React routing, return all requests to React app
+    app.get('*', function(req, res) {
+      res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+    });
+  }
+
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect

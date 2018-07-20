@@ -1,6 +1,6 @@
 import { UPDATE_SEARCH_KEY, UPDATE_RECIPES } from '../constants';
 const initialState = {
-    searchkey: '',
+    searchKey: '',
     recipes: []
 }
 
@@ -10,7 +10,7 @@ export function RecipeApp(state = initialState, action) {
     switch (action.type) {
         case UPDATE_SEARCH_KEY:
           return Object.assign({}, state, {
-            searchkey: action.searchkey
+            searchKey: action.searchKey
           })
         case UPDATE_RECIPES:
           return Object.assign({}, state, {
