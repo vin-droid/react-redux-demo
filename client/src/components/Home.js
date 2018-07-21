@@ -11,7 +11,6 @@ class Home extends Component {
       root: {
         flexGrow: 1,
       }});
-    console.log(this.props);
     return (
       <div style={styles.root}>
         <SearchRecipe  />

@@ -9,7 +9,13 @@ import initState from './initState';
 import {RecipeApp} from './reducers/index';
 import registerServiceWorker from './registerServiceWorker';
 
-const store = createStore(RecipeApp,applyMiddleware(logger));
+const store = (() => {
+	if (process.env.NODE_ENV === 'production'){
+		return createStore(RecipeApp);
+	}else{
+		return createStore(RecipeApp,applyMiddleware(logger));
+	}
+})();
 
 ReactDOM.render(
 <Provider store={store}>

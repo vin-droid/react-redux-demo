@@ -34,8 +34,6 @@ class SearchRecipe extends Component{
 			.then(results => {
 				return results.json();
 			}).then(data =>{
-				console.log("priting data");
-				console.log(data);
 				if (data === undefined || data.result.items === undefined){
 					this.props.updateRecipes([]);
 				}else{
