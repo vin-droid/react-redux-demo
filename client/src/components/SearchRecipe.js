@@ -36,8 +36,13 @@ class SearchRecipe extends Component{
 			}).then(data =>{
 				console.log("priting data");
 				console.log(data);
+				if (data === undefined || data.result.items === undefined){
+					this.props.updateRecipes([]);
+				}else{
+					this.props.updateRecipes(data.result.items);
+				}
 				this.props.updateSeachKey(this.state.query);
-				this.props.updateRecipes(data.result.items);
+
 			});
 		}
 	}
