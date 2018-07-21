@@ -24,7 +24,6 @@ app.get('/api/search-github-users', (req, res) => {
 		res.json({
             result: JSON.parse(body)
 		});
-        console.log(response);
 	})
 });
 

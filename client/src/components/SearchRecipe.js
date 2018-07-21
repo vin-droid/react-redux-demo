@@ -6,7 +6,6 @@ import {fetchUsers} from '../ApiCalls';
 import {updateSeachKey, updateRecipes} from '../actions';
 import {RecipeApp} from '../reducers';
 import {Button, Input} from '@material-ui/core';
-import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 
 class SearchRecipe extends Component{
@@ -28,14 +27,19 @@ class SearchRecipe extends Component{
 	}
 
 	hitApi() {
-		console.log(this.state.query);
-		fetchUsers({query: this.state.query})
-		.then(results => {
-			return results.json();
-		}).then(data =>{
-			this.props.updateSeachKey(this.state.query);
-			this.props.updateRecipes(data.result.items);
-		})
+		if (this.state.query === ''){
+			this.props.updateRecipes([]);
+		}else{
+			fetchUsers({query: this.state.query})
+			.then(results => {
+				return results.json();
+			}).then(data =>{
+				console.log("priting data");
+				console.log(data);
+				this.props.updateSeachKey(this.state.query);
+				this.props.updateRecipes(data.result.items);
+			});
+		}
 	}
 
 
