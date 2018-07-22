@@ -3,10 +3,11 @@ import {debounce}  from "../Utility";
 import {bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
 import {fetchUsers} from '../ApiCalls';
-import {updateSeachKey, updateRecipes} from '../actions';
+import {updateSeachKey, updateRecipes, updateToaster} from '../actions';
 import {RecipeApp} from '../reducers';
-import {Button, Input} from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
+
+
 
 class SearchRecipe extends Component{
 
@@ -27,18 +28,30 @@ class SearchRecipe extends Component{
 	}
 
 	hitApi() {
+		let msgObj = {};
 		if (this.state.query === ''){
+			msgObj = {message: `Type Username`, variant: 'info'}
+			this.props.updateToaster({open:true, variant: msgObj.variant, message: msgObj.message});
 			this.props.updateRecipes([]);
 		}else{
 			fetchUsers({query: this.state.query})
 			.then(results => {
 				return results.json();
 			}).then(data =>{
-				if (data === undefined || data.result.items === undefined){
+				if (data === undefined){
 					this.props.updateRecipes([]);
-				}else{
+					msgObj = {message: `No user found with username ${this.state.query}`, variant: 'error'}
+				}else if(data.result.items === undefined){
+					this.props.updateRecipes([]);
+					msgObj = {message: data.result.message + "       : Please Refresh the Page ", variant: 'error'}
+				} else {
+					msgObj = {message: `fetched users! per_page: ${data.result.items.length} total_count: ${data.result.total_count}`, variant: 'success'}
+					if (data.result.total_count === 0 ){
+						msgObj = {message: `No user found with username ${this.state.query}`, variant: 'warning'}
+					}
 					this.props.updateRecipes(data.result.items);
 				}
+				this.props.updateToaster({open:true, variant: msgObj.variant, message: msgObj.message});
 				this.props.updateSeachKey(this.state.query);
 
 			});
@@ -64,18 +77,12 @@ class SearchRecipe extends Component{
 	}
 }
 
-const mapStateToProps = ({recipes,searchKey}) => (
-    {
-    searchKey: searchKey,
-    recipes: recipes
-  }
-)
-
 const mapDispatchToProps = dispatch => (
   bindActionCreators({
     updateSeachKey,
-    updateRecipes
+    updateRecipes,
+    updateToaster
   },dispatch)
 )
 
-export default connect(mapStateToProps,mapDispatchToProps)(SearchRecipe);
+export default connect(null,mapDispatchToProps)(SearchRecipe);

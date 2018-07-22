@@ -17,6 +17,10 @@ class Recipes extends Component {
       items: props.items
     });
   }
+
+  handlePageClick(){
+
+  }
   
   render() {
     const recipeItems = this.state.items.map(recipeItem => {
