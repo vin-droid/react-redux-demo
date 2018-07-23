@@ -8,6 +8,7 @@ import logger from 'redux-logger'
 import initState from './initState';
 import {RecipeApp} from './reducers/index';
 import registerServiceWorker from './registerServiceWorker';
+import { BrowserRouter } from 'react-router-dom'
 
 const store = (() => {
 	if (process.env.NODE_ENV === 'production'){
@@ -19,6 +20,8 @@ const store = (() => {
 
 ReactDOM.render(
 <Provider store={store}>
-    <App />
+	<BrowserRouter>
+		<App />
+	</BrowserRouter>
 </Provider>, document.getElementById('root'));
 registerServiceWorker();

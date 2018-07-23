@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
 import Home from './components/Home';
-import logo from './logo.svg';
+import Player from './components/player/Player';
+import { BrowserRouter,Route} from 'react-router-dom'
 import './App.css';
+import Root from './components/layout/Root';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Home />
+        <Root>
+          <BrowserRouter >
+            <div>
+              <Route exact path='/' component={Home}/>
+              <Route path='/player' component={Player}/>
+              {/* <Route path='/team' component={Team}/> */}
+            </div>
+          </BrowserRouter>
+        </Root>
       </div>
     );
   }
