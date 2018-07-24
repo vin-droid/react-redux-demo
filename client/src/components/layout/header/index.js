@@ -1,11 +1,8 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import Button from '@material-ui/core/Button';
 
 
 class Header  extends Component{
@@ -23,17 +20,11 @@ class Header  extends Component{
                 <div>
                     <nav>
                         <ul>
-                            <li><Link to='/'>Home</Link></li>
-                            <li><Link to='/player'>Roster</Link></li>
-                            <li><Link to='/team'>Schedule</Link></li>
+                            <li><NavLink activeClassName='active' to='/'>Home</NavLink></li>
+                            <li><NavLink activeClassName='active' to='/player'>Player</NavLink></li>
+                            <li><NavLink activeClassName='active' to='/team'>Team</NavLink></li>
                         </ul>
                     </nav>
-                    <Button>
-                    <div>Button 1</div>
-                    </Button>
-                    <Button>
-                    <div>Button 2</div>
-                    </Button>
                 </div>
                 </Toolbar>
             </AppBar>

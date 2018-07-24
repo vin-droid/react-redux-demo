@@ -8,7 +8,9 @@ import logger from 'redux-logger'
 import initState from './initState';
 import {RecipeApp} from './reducers/index';
 import registerServiceWorker from './registerServiceWorker';
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom';
+import 'bulma/css/bulma.css'
+// import 'bootstrap/dist/css/bootstrap.css';
 
 const store = (() => {
 	if (process.env.NODE_ENV === 'production'){
