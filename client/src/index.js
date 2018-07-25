@@ -1,15 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import { Provider } from 'react-redux';
 import { createStore,applyMiddleware } from 'redux';
 import logger from 'redux-logger'
-import initState from './initState';
-import {RecipeApp} from './reducers/index';
+import {RecipeApp} from './reducers/recipe';
 import registerServiceWorker from './registerServiceWorker';
-import { BrowserRouter } from 'react-router-dom';
-import 'bulma/css/bulma.css'
+import 'bulma/css/bulma.css';
+import {routes as Routes} from './routes';
+
 // import 'bootstrap/dist/css/bootstrap.css';
 
 const store = (() => {
@@ -22,8 +20,8 @@ const store = (() => {
 
 ReactDOM.render(
 <Provider store={store}>
-	<BrowserRouter>
-		<App />
-	</BrowserRouter>
+	<div>
+		<Routes/>
+	</div>	
 </Provider>, document.getElementById('root'));
 registerServiceWorker();

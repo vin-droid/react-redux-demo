@@ -22,6 +22,7 @@ class Header  extends Component{
                         <ul>
                             <li><NavLink activeClassName='active' to='/'>Home</NavLink></li>
                             <li><NavLink activeClassName='active' to='/player'>Player</NavLink></li>
+                            <li><NavLink activeClassName='active' to='/players'>Players</NavLink></li>
                             <li><NavLink activeClassName='active' to='/team'>Team</NavLink></li>
                         </ul>
                     </nav>
