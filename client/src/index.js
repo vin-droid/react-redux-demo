@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import { Provider } from 'react-redux';
 import { createStore,applyMiddleware } from 'redux';
 import logger from 'redux-logger'
 import initState from './initState';
 import {RecipeApp} from './reducers/index';
 import registerServiceWorker from './registerServiceWorker';
-import { BrowserRouter } from 'react-router-dom';
-import 'bulma/css/bulma.css'
-// import 'bootstrap/dist/css/bootstrap.css';
+import { BrowserRouter,Route, Switch} from 'react-router-dom'
+import Home from './components/Home';
+import Player from './components/player/Player';
+import Root from './components/layout/Root';
+import 'bulma/css/bulma.css';
 
 const store = (() => {
 	if (process.env.NODE_ENV === 'production'){
@@ -23,7 +23,12 @@ const store = (() => {
 ReactDOM.render(
 <Provider store={store}>
 	<BrowserRouter>
-		<App />
+		<Root>
+            <div>
+              <Route exact path='/' component={Home}/>
+              <Route  path='/player' component={Player}/>
+            </div>
+        </Root>
 	</BrowserRouter>
 </Provider>, document.getElementById('root'));
 registerServiceWorker();
