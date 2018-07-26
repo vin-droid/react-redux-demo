@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
 import SearchRecipe from './SearchRecipe';
 import Recipes from './Recipes';
-import Toaster from './Toaster';
-
 
 class Home extends Component {
   
@@ -17,19 +14,10 @@ class Home extends Component {
       <div style={styles.root}>
         <SearchRecipe  />
         <Recipes items={this.props.recipes} />
-        <Toaster toasterOpts={this.props.toasterOpts}/>
       </div>
     );
   }
 }
 
-const mapStateToProps = ({recipes, searchKey, toasterOpts}) => {
-  return {
-  searchKey: searchKey,
-  recipes: recipes,
-  toasterOpts: toasterOpts
-  }
-}
-
-export default connect(mapStateToProps)(Home);
+export default Home;
 

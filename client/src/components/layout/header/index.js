@@ -6,9 +6,9 @@ import Typography from '@material-ui/core/Typography';
 
 
 class Header  extends Component{
-    constructor(props){
-        super(props);
-    }
+    // constructor(props){
+    //     super(props);
+    // }
 
     render(){
         return(
@@ -21,7 +21,8 @@ class Header  extends Component{
                     <nav>
                         <ul>
                             <li><NavLink activeClassName='active' to='/'>Home</NavLink></li>
-                            <li><NavLink activeClassName='active' to='/player'>Player</NavLink></li>
+                            <li><NavLink activeClassName='active' to='/player'>Create Player</NavLink></li>
+                            <li><NavLink activeClassName='active' to='/players'>Players</NavLink></li>
                             <li><NavLink activeClassName='active' to='/team'>Team</NavLink></li>
                         </ul>
                     </nav>

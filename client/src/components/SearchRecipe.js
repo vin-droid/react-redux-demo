@@ -3,8 +3,8 @@ import {debounce}  from "../Utility";
 import {bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
 import {fetchUsers} from '../ApiCalls';
-import {updateSeachKey, updateRecipes, updateToaster} from '../actions';
-import {RecipeApp} from '../reducers';
+import {updateSeachKey, updateRecipes, updateToaster} from '../actions/recipe';
+// import {RecipeApp} from '../reducers/recipe';
 import TextField from '@material-ui/core/TextField';
 
 
@@ -36,6 +36,7 @@ class SearchRecipe extends Component{
 		}else{
 			fetchUsers({query: this.state.query})
 			.then(results => {
+				console.log(results);
 				return results.json();
 			}).then(data =>{
 				if (data === undefined){
