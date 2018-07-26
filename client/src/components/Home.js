@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import SearchRecipe from './SearchRecipe';
 import Recipes from './Recipes';
+import {connect} from 'react-redux';
 
 class Home extends Component {
-  
+  constructor(props){
+    super(props);
+  }
   render() {
-    const styles = theme => ({
-      root: {
-        flexGrow: 1,
-      }});
-    const toasterOpts = {open: true}
     return (
-      <div style={styles.root}>
+      <div>
         <SearchRecipe  />
         <Recipes items={this.props.recipes} />
       </div>
@@ -19,5 +17,10 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = ({recipes}) => {
+  return {
+  recipes: recipes
+  }
+}
+export default connect(mapStateToProps)(Home);
 

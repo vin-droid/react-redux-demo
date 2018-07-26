@@ -36,7 +36,6 @@ class SearchRecipe extends Component{
 		}else{
 			fetchUsers({query: this.state.query})
 			.then(results => {
-				console.log(results);
 				return results.json();
 			}).then(data =>{
 				if (data === undefined){

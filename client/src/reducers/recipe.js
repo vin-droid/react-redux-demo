@@ -14,6 +14,7 @@ export function RecipeApp(state = initialState, action) {
           searchKey: action.searchKey
         })
       case UPDATE_RECIPES:
+      console.log("action:recipe", action)
         return Object.assign({}, state, {
           recipes: action.items
         })
@@ -24,5 +25,4 @@ export function RecipeApp(state = initialState, action) {
       default:
         return state
     }
-  return state
 }

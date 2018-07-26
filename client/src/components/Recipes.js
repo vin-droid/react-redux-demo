@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import RecipeItem from './../presentational/RecipeItem';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
 
 class Recipes extends Component {
 	constructor(props) {
@@ -17,25 +15,22 @@ class Recipes extends Component {
       items: props.items
     });
   }
-
-  handlePageClick(){
-
-  }
   
   render() {
     const recipeItems = this.state.items.map(recipeItem => {
       return(
-        <Grid item xs={6} sm={3} key= {recipeItem.id}>
-          <Paper><RecipeItem recipeItem={recipeItem} /></Paper>
-        </Grid>
-      );
-    });
+          <li key= {recipeItem.id}>
+            <RecipeItem recipeItem={recipeItem} />
+          </li>
+        );
+      }
+    );
     
     return (
       <div>
-        <Grid container spacing={24}>
+        <ul>
         {recipeItems}
-        </Grid>
+        </ul>
       </div>
     );
   }

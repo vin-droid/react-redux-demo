@@ -35,7 +35,7 @@ export const Player = {
     create: player => 
         requests.post(`/players`, {player}),
     update: player => 
-        requests.put(`/players`, {player}),
+        requests.put(`/players/${player.id}`, {player}),
     delete: playerId => 
         requests.del(`/players/${playerId}`),
     show: playerId => 
