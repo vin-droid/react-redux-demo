@@ -1,5 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
+import SampleImage from '../../assets/images/sample.png';
   
 const PlayerItem = ({playerItem}) => { 
 	return(
@@ -7,7 +8,7 @@ const PlayerItem = ({playerItem}) => {
 			<article className="media">
 				<div className="media-left">
 				<figure className="image is-64x64">
-					<img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"></img>
+					<img src={SampleImage} alt="Image"></img>
 				</figure>
 				</div>
 				<div className="media-content">

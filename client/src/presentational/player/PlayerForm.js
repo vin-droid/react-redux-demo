@@ -1,8 +1,15 @@
 import React from 'react'; 
 import { playerModel } from '../../models';
 import {fieldChangeHandler} from '../../CommonHelper';
-const initialState = playerModel
+const initialState = playerModel;
 
+
+
+
+function resetForm(e){
+    console.log(e);
+    e.target.form.reset();
+}
 export const PlayerForm = ({state = initialState, context, formAction, formSubmitHandler}) => (
     <form onSubmit={(e) => formSubmitHandler.bind(context,e)()} >
     <div className="field">
@@ -67,6 +74,7 @@ export const PlayerForm = ({state = initialState, context, formAction, formSubmi
     </div>
     <div className="control">
         <button className="button is-primary" type='submit'>{formAction.toCamelCase()}</button>
+        <button className="button is-primary" type='button' onClick={(e) => resetForm(e)}>Reset</button>    
     </div>
 </form>
 )

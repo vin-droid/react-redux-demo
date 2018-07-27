@@ -9,7 +9,7 @@ class PlayerShow extends Component{
     
     constructor(props){
         super(props)
-        this.state = Object.assign({},playerModel, {id: ''})
+        this.state = playerModel
     }
 
 

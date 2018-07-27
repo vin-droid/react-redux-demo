@@ -14,13 +14,11 @@ export const PlayerDetails = ({state = initialState}) => (
 				</div>
 				<div className="media-content">
 				<div className="content">
-					<p>
 					<strong>{state.first_name} {state.last_name}</strong> <small>{state.country_name}</small>
 					<br></br>
                     <p>State: <small>{state.state_name}</small></p>
                     <p>Game:<small>{state.game}</small> </p>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-					</p>
 				</div>
 				<nav className="level is-mobile">
 					<div className="level-left">

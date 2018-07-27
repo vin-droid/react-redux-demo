@@ -10,7 +10,7 @@ class PlayerEdit extends React.Component{
 
     constructor(props){
         super(props);
-        this.state = Object.assign({},playerModel, {id: ''})
+        this.state = playerModel;
     }
     componentWillMount(){
         Player.show(this.props.match.params.playerId).

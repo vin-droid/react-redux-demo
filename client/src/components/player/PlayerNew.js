@@ -12,24 +12,18 @@ class PlayerNew extends Component{
         super(props);
         this.state = playerModel
     }
-    resetPlayerFormValues(){
-        this.setState(playerModel)
-    }
-    componentWillReceiveProps(props){
-        console.log("playerNew:recieve", props);
-    }
     createPlayer(e){
         e.preventDefault();
         Player.create(this.state)
         .then(data => {
             console.log(data);
             if (data.errors === undefined){
+                this.props.history.push(`/player/${data.player.id}`);
                 this.props.updateToaster({open:true, variant: 'success', message: data.meta.message});
             }else{
                 this.props.updateToaster({open:true, variant: 'erorr', message: data.errors});
             }
         });
-        this.resetPlayerFormValues();
     }
 
     render(){
