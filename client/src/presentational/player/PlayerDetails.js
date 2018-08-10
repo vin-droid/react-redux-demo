@@ -3,7 +3,7 @@ import { playerModel } from '../../models';
 import {NavLink} from 'react-router-dom';
 const initialState = playerModel
 
-export const PlayerDetails = ({state = initialState}) => (
+const PlayerDetails = ({state = initialState}) => (
     <div className='container'>
 		<div className="box">
 			<article className="media">

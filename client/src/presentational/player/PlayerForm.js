@@ -10,7 +10,7 @@ function resetForm(e){
     console.log(e);
     e.target.form.reset();
 }
-export const PlayerForm = ({state = initialState, context, formAction, formSubmitHandler}) => (
+const PlayerForm = ({state = initialState, context, formAction, formSubmitHandler}) => (
     <form onSubmit={(e) => formSubmitHandler.bind(context,e)()} >
     <div className="field">
         <label className="label">First Name</label>

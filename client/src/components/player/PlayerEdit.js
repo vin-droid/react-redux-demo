@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {Player} from '../../ApiCalls';
 import {updateToaster} from '../../actions/shared';
 import {playerModel} from '../../models';
-import {PlayerForm} from '../../presentational/player/PlayerForm';
+import PlayerForm from '../../presentational/player/PlayerForm';
 
 class PlayerEdit extends React.Component{
 

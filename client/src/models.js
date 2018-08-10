@@ -1,4 +1,4 @@
-export const playerModel  = {
+const playerModel  = {
     id: '',
     first_name: '',
     last_name: '',
@@ -6,3 +6,6 @@ export const playerModel  = {
     country_name: '',
     game: '',
 }
+
+
+export {playerModel};
